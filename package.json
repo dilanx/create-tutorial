@@ -1,6 +1,6 @@
 {
   "name": "create-tutorial",
-  "version": "1.0.6",
+  "version": "1.0.12",
   "description": "Follow along with tutorials on dilan.blog",
   "main": "index.js",
   "prettier": "@dilanx/config/prettier",

@@ -8,6 +8,7 @@ const fs = require('fs');
 const projects = [
   {
     name: 'tutorial-react-wordle',
+    cli: 'wordle',
     color: green,
     variants: [
       {
@@ -34,16 +35,31 @@ const fileRename = {
 };
 
 async function init() {
+  const argName = process.argv[2];
+
+  let argProject;
+
+  if (argName) {
+    argProject = projects.find(
+      (project) => (project.cli || project.name) === argName
+    );
+    if (!argProject) {
+      console.log(red(`Project ${argName} not found.`));
+      process.exit(1);
+    }
+    console.log(`Using tutorial project ${green(argProject.name)}.`);
+  }
+
   let {
     project: { name: project },
     variant,
   } = await prompts(
     [
       {
-        type: 'autocomplete',
+        type: argProject ? null : 'autocomplete',
         name: 'project',
         message: reset('Select a tutorial project'),
-        initial: 0,
+        initial: argProject || 0,
         choices: projects.map((project) => ({
           title: project.color(project.display || project.name),
           value: project,
@@ -55,7 +71,7 @@ async function init() {
         message: reset('Select a variant'),
         initial: 0,
         choices: (project) =>
-          project.variants.map((variant) => ({
+          (argProject || project).variants.map((variant) => ({
             title: variant.color(variant.display || variant.name),
             value: variant.name,
           })),
