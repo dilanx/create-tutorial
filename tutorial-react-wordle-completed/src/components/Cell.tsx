@@ -12,7 +12,7 @@ export default function Cell({ cell }: CellProps) {
       backgroundColor = 'green';
       break;
     case 'partial':
-      backgroundColor = 'gold';
+      backgroundColor = 'orange';
       break;
     case 'incorrect':
       backgroundColor = 'gray';
