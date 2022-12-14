@@ -50,10 +50,7 @@ async function init() {
     console.log(`Using tutorial project ${green(argProject.name)}.`);
   }
 
-  let {
-    project: { name: project },
-    variant,
-  } = await prompts(
+  let { project, variant } = await prompts(
     [
       {
         type: argProject ? null : 'autocomplete',
@@ -84,6 +81,8 @@ async function init() {
       },
     }
   );
+
+  project = argProject ? argProject.name : project.name;
 
   const template = `${project}-${variant}`;
 
