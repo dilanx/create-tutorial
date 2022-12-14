@@ -1,0 +1,31 @@
+{
+  "name": "create-tutorial",
+  "version": "1.0.6",
+  "description": "Follow along with tutorials on dilan.blog",
+  "main": "index.js",
+  "prettier": "@dilanx/config/prettier",
+  "author": "Dilan Nair",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "kolorist": "^1.6.0"
+  },
+  "devDependencies": {
+    "@dilanx/config": "^1.1.0",
+    "prettier": "2.8.1"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "bin": {
+    "create-tutorial": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilanx/create-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dilanx/create-tutorial/issues"
+  },
+  "homepage": "https://github.com/dilanx/create-tutorial#readme"
+}
