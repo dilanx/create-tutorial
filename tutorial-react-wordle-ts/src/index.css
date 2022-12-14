@@ -13,3 +13,29 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  font-size: 64px;
+  font-weight: bold;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+}
