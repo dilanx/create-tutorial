@@ -1,13 +1,14 @@
-import { CellData } from '../types';
+import type { Status } from '../types';
 
 interface CellProps {
-  cell: CellData;
+  letter?: string;
+  status?: Status;
 }
 
-export default function Cell({ cell }: CellProps) {
+export default function Cell({ letter, status }: CellProps) {
   let backgroundColor;
 
-  switch (cell?.status) {
+  switch (status) {
     case 'correct':
       backgroundColor = 'green';
       break;
@@ -21,7 +22,7 @@ export default function Cell({ cell }: CellProps) {
 
   return (
     <div className="cell" style={{ backgroundColor }}>
-      {cell?.letter?.toUpperCase()}
+      {letter?.toUpperCase()}
     </div>
   );
 }

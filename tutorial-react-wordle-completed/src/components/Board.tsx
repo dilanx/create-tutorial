@@ -1,32 +1,7 @@
 import { useEffect, useState } from 'react';
-import { checkWord, getRandomWord, isWord, ROWS } from '../common';
-import { CellData } from '../types';
+import { getRandomWord, update } from '../common';
+import type { CellData } from '../types';
 import Row from './Row';
-
-function update(key: string, word: string, rows: CellData[][]) {
-  const current = rows.length - 1;
-  let old = rows.slice(0, current);
-  let row = [...rows[current]];
-
-  if (/^[a-z]$/.test(key)) {
-    if (row.length === 5) return rows;
-    row.push({ letter: key });
-  }
-
-  if (key === 'Backspace') {
-    row.pop();
-  }
-
-  if (key === 'Enter') {
-    if (row.length !== 5 || !isWord(row)) return rows;
-    row = checkWord(word, rows[current]);
-    if (rows.length < ROWS) {
-      return [...old, row, []];
-    }
-  }
-
-  return [...old, row];
-}
 
 export default function Board() {
   const [word] = useState<string>(getRandomWord());
@@ -44,11 +19,14 @@ export default function Board() {
     };
   }, []);
 
-  const rowComponents: JSX.Element[] = [];
-
-  for (let i = 0; i < ROWS; i++) {
-    rowComponents.push(<Row key={`row-${i}`} data={rows[i]} />);
-  }
-
-  return <div className="board">{rowComponents}</div>;
+  return (
+    <div className="board">
+      <Row data={rows[0]} />
+      <Row data={rows[1]} />
+      <Row data={rows[2]} />
+      <Row data={rows[3]} />
+      <Row data={rows[4]} />
+      <Row data={rows[5]} />
+    </div>
+  );
 }

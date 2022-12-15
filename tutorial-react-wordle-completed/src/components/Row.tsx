@@ -1,16 +1,18 @@
-import { LETTERS } from '../common';
-import { CellData } from '../types';
+import type { CellData } from '../types';
 import Cell from './Cell';
 
 interface RowProps {
-  data: CellData[];
+  data?: CellData[];
 }
 
 export default function Row({ data }: RowProps) {
-  const cellComponents: JSX.Element[] = [];
-  for (let i = 0; i < LETTERS; i++) {
-    cellComponents.push(<Cell key={`cell-${i}`} cell={data?.[i]} />);
-  }
-
-  return <div className="row">{cellComponents}</div>;
+  return (
+    <div className="row">
+      <Cell {...data?.[0]} />
+      <Cell {...data?.[1]} />
+      <Cell {...data?.[2]} />
+      <Cell {...data?.[3]} />
+      <Cell {...data?.[4]} />
+    </div>
+  );
 }
